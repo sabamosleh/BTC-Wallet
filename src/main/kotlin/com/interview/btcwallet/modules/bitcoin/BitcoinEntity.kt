@@ -11,6 +11,8 @@ class BitcoinEntity(
     val id: Long,
     @Column(nullable = false)
     val datetime: LocalDateTime,
-    val amount: BigDecimal
+    val amount: BigDecimal,
+    val createdAt: LocalDateTime? = LocalDateTime.now(),
+    val updatedAt: LocalDateTime? = LocalDateTime.now()
 
 )
