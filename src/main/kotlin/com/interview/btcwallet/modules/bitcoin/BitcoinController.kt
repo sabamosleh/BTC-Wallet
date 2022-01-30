@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController
 class BitcoinController(private val bitcoinService: BitcoinService) {
 
     @GetMapping
-    fun getBitcoins(): List<BitcoinEntity> {
-        return bitcoinService.getBitcoins();
+    fun getBitcoins(): List<BitcoinView> {
+        return bitcoinService.getBitcoins()
     }
 }
