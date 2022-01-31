@@ -9,4 +9,11 @@ class BitcoinService(private val bitcoinRepository: BitcoinRepository) {
     fun getBitcoins(): List<BitcoinView> {
         return bitcoinRepository.findAll().stream().map(BitcoinEntity::toBitcoinView).collect(Collectors.toList())
     }
+
+    fun createBitcoin(bitcoinView: BitcoinView): BitcoinView {
+        return bitcoinRepository
+            .save(bitcoinView.toBitcoinEntity())
+            .toBitcoinView()
+    }
+
 }
