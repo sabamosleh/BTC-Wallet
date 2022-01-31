@@ -5,7 +5,7 @@ import java.time.LocalDateTime
 import javax.persistence.*
 
 @Entity
-class BitcoinEntity(
+class Transaction(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
@@ -18,7 +18,7 @@ class BitcoinEntity(
     val updatedAt: LocalDateTime? = LocalDateTime.now()
 )
 
-fun BitcoinEntity.toBitcoinView() = BitcoinView(
+fun Transaction.toTransactionView() = TransactionView(
     datetime = datetime,
     amount = amount
 )

@@ -6,4 +6,4 @@ import javax.transaction.Transactional
 
 @Repository
 @Transactional
-interface BitcoinRepository : JpaRepository<BitcoinEntity, Long>
+interface TransactionRepository : JpaRepository<Transaction, Long>

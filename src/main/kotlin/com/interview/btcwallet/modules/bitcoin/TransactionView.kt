@@ -5,13 +5,13 @@ import java.math.BigDecimal
 import java.time.LocalDateTime
 
 
-class BitcoinView(
+class TransactionView(
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     val datetime: LocalDateTime,
     val amount: BigDecimal,
 )
 
-fun BitcoinView.toBitcoinEntity() = BitcoinEntity(
+fun TransactionView.toTransaction() = Transaction(
     datetime = datetime,
     amount = amount
 )
