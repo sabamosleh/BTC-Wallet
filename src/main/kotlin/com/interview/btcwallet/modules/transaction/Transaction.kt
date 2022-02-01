@@ -1,4 +1,4 @@
-package com.interview.btcwallet.modules.bitcoin
+package com.interview.btcwallet.modules.transaction
 
 import java.math.BigDecimal
 import java.time.LocalDateTime

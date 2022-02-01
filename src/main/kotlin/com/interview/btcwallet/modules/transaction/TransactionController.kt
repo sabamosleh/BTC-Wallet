@@ -1,4 +1,4 @@
-package com.interview.btcwallet.modules.bitcoin
+package com.interview.btcwallet.modules.transaction
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping

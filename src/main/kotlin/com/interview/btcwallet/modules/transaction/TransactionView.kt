@@ -1,4 +1,4 @@
-package com.interview.btcwallet.modules.bitcoin
+package com.interview.btcwallet.modules.transaction
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import java.math.BigDecimal
