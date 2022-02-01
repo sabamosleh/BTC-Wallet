@@ -17,7 +17,7 @@ class WalletStatusService(private val walletRepository: WalletRepository) {
         var walletStatus = walletRepository.findByDateTime(transactionDate)
         val balance = transaction.amount
         if (Objects.nonNull(walletStatus)) {
-            walletStatus?.amount?.add(balance)
+            walletStatus?.amount = balance.add(walletStatus?.amount)
         } else {
             walletStatus = WalletStatus(null, balance, transactionDate)
             walletStatus.amount = transaction.amount
