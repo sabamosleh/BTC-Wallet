@@ -1,0 +1,23 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+				   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+				   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+	<changeSet author="saba" id="000000000000000-1">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="applied_day_of_week"/>
+			</not>
+		</preConditions>
+		<createTable tableName="wallet">
+			<column name="id" type="INT">
+				<constraints nullable="false"/>
+			</column>
+			<column name="dateTime" type="datetime"/>
+			<column name="amount" type="DECIMAL"/>
+
+		</createTable>
+		<loadData tableName="wallet" file="config/liquibase/wallet.csv"/>
+	</changeSet>
+
+</databaseChangeLog>
