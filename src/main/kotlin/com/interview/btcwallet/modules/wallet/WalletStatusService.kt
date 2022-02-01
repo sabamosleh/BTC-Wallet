@@ -1,8 +1,10 @@
 package com.interview.btcwallet.modules.wallet
 
 import com.interview.btcwallet.modules.transaction.TransactionView
+import org.apache.commons.lang3.time.DateUtils
 import org.apache.logging.log4j.LogManager
 import org.springframework.stereotype.Service
+import java.util.*
 
 @Service
 class WalletStatusService(private val walletRepository: WalletRepository) {
@@ -11,12 +13,15 @@ class WalletStatusService(private val walletRepository: WalletRepository) {
     }
 
     fun updateWalletStatus(transaction: TransactionView) {
-        //truncate transaction by hour
-        //check if wallet has that date
-        //yes: wallet amount = trancation amount + wallet amount
-        //no : do we have preivoius hour in wallet?
-        //yes: wallet balance = prevoiuse balance + transaction amount
-        //no : wallet balance = transaction amount
-
+        val transactionDate = DateUtils.ceiling(transaction.datetime, 11)
+        var walletStatus = walletRepository.findByDateTime(transactionDate)
+        val balance = transaction.amount
+        if (Objects.nonNull(walletStatus)) {
+            walletStatus?.amount?.add(balance)
+        } else {
+            walletStatus = WalletStatus(null, balance, transactionDate)
+            walletStatus.amount = transaction.amount
+        }
+        walletRepository.save(walletStatus)
     }
 }
