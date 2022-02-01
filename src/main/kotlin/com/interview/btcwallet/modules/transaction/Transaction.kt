@@ -1,7 +1,7 @@
 package com.interview.btcwallet.modules.transaction
 
 import java.math.BigDecimal
-import java.time.LocalDateTime
+import java.util.*
 import javax.persistence.*
 
 @Entity
@@ -11,11 +11,11 @@ class Transaction(
     val id: Long? = null,
 
     @Column(nullable = false)
-    val datetime: LocalDateTime,
+    val datetime: Date,
     @Column(nullable = false)
     val amount: BigDecimal,
-    val createdAt: LocalDateTime? = LocalDateTime.now(),
-    val updatedAt: LocalDateTime? = LocalDateTime.now()
+    val createdAt: Date? = Date(),
+    val updatedAt: Date? = Date()
 )
 
 fun Transaction.toTransactionView() = TransactionView(

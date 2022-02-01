@@ -2,12 +2,12 @@ package com.interview.btcwallet.modules.transaction
 
 import com.fasterxml.jackson.annotation.JsonFormat
 import java.math.BigDecimal
-import java.time.LocalDateTime
+import java.util.*
 
 
 class TransactionView(
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    val datetime: LocalDateTime,
+    val datetime: Date,
     val amount: BigDecimal,
 )
 

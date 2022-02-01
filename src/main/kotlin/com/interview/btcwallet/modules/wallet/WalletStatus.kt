@@ -1,7 +1,7 @@
 package com.interview.btcwallet.modules.wallet
 
 import java.math.BigDecimal
-import java.time.LocalDateTime
+import java.util.*
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -13,5 +13,5 @@ data class WalletStatus(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     var amount: BigDecimal? = null,
-    var dateTime: LocalDateTime? = null
+    var dateTime: Date? = null
 )
