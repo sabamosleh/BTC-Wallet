@@ -15,3 +15,7 @@ data class WalletStatus(
     var amount: BigDecimal? = null,
     var dateTime: Date? = null
 )
+fun WalletStatus.toWalletView() = WalletView(
+    amount = amount,
+    dateTime = dateTime
+)
