@@ -4,6 +4,7 @@ import com.interview.btcwallet.modules.transaction.TransactionView
 import org.apache.commons.lang3.time.DateUtils
 import org.springframework.stereotype.Service
 import java.util.*
+import java.util.stream.Collectors
 
 @Service
 class WalletStatusService(private val walletRepository: WalletRepository) {
@@ -19,5 +20,10 @@ class WalletStatusService(private val walletRepository: WalletRepository) {
             walletStatus.amount = transaction.amount
         }
         walletRepository.save(walletStatus)
+    }
+
+    fun getWalletStatus(startDate: Date, endDate: Date): List<WalletView>? {
+        val walletStatuses = walletRepository.findByDateTimeAfterAndDateTimeBefore(startDate, endDate)
+        return walletStatuses?.stream()?.map { it -> it.toWalletView() }?.collect(Collectors.toList())
     }
 }

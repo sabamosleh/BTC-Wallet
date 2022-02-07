@@ -11,4 +11,5 @@ interface WalletRepository : JpaRepository<WalletStatus, Long> {
 
     fun findByDateTime(dateTime: Date): WalletStatus?
     fun save(walletStatus: WalletStatus?)
+    fun findByDateTimeAfterAndDateTimeBefore(dateTimeAfter: Date, dateTimeBefore: Date): List<WalletStatus>?
 }
